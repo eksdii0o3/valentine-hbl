@@ -1,0 +1,43 @@
+#summary Function and Structure of Auxiliary Data Files
+#labels Phase-Design
+
+= _Introduction_ =
+
+This document is about the auxiliary data files used by HBL: their purpose and their structure.
+
+= _Details_ =
+
+Although the code is full of details about the external data files, we will detail them also here, so people who don't want to dig out in the source can find about the files. 
+
+In current revision (42), there are 2 groups of files: _libs_ and _config_. 
+
+==libs==
+
+_libs_ are included in the directories libs_5xx and libs_6xx. They refer to the firmware version they're built upon. HBL will automatically detect the firmware version and use the relevant directory. Since both directories have the same function, we will refer to them as _libs_ from now on. 
+
+Inside _libs_ directory there are various _.nids_ files. Each file has the name of an exported FW library, and it contains all NIDs exported from that library (binary format). Each NID is 4 bytes long, and they're just concatenated one after the other. So the file is no more than a big NID array. This files are used by the syscall estimation process.
+
+==config==
+
+This directory contains _imports.config_ files, each one for a given firmware version. HBL will automatically detect the firmware version of the PSP and select the appropriate file. All of them have the same structure, and we will refer to them as _imports.config_. The structure is detailed in _config.h_ as follows:
+
+1. 32-bit word that indicates how many _.lib.stub_ section addresses are stored in the file
+
+2. 32-bit word that indicates how many libraries are imported by HBL
+
+3. 32-bit word that indicates how many functions (total) from the libraries are imported by HBL
+
+4. Array of user mode _.lib.stub_ section addresses to process. Game's _.lib.stub_ should be the first, since it's used by the loader to resolve basic HBL imports. 
+
+5. Array of library descriptors for the file. Each one has the following structure:
+    - Library name (null-terminated ASCII string)
+
+    - Number of functions imported from this library
+
+    - Offset in the file for the function NIDs imported by this library
+
+6. Array of function NIDs imported by HBL. These must be in the same order (lower to higher memory) as the HBL stubs defined in *sdk_hbl.S*
+
+The _.lib.stub_ sections are used to retreive resolved function imports from other user mode modules.
+
+The array of HBL imported libraries and function NIDs is needed so the loader and HBL itself could know what imports are needed for HBL to run, also for resolving them (obvious imports are resolved by the loader, more imports are resolved/estimated by HBL itself). 
