@@ -1,4 +1,4 @@
-#summary Half Byte Loader
+#summary Half Byte Loader BETA
 #labels Phase-Requirements
 
 = _Introduction_ =
@@ -41,7 +41,7 @@ Not yet, but the objective is to release a fully working version eventually.
 
 ==What's the project current status?==
 
-Working on it ;) Check the HBL development subforum: http://advancedpsp.tk/foro_es/viewforum.php?f=37 for more information on current active developers. You can also check the issues: http://code.google.com/p/valentine-hbl/issues/list
+It's still a BETA, but the developers are working on it ;) Check the HBL development subforum: http://advancedpsp.tk/foro_es/viewforum.php?f=37 for more information on developing. You can also check the issues: http://code.google.com/p/valentine-hbl/issues/list
 
 ==When this will be completed?==
 
