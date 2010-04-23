@@ -1,8 +1,6 @@
 #summary Half Byte Loader BETA
 #labels Phase-Requirements
 
-= _Introduction_ =
-
 ==What is HB Loader? ==
 
 HB Loader is a project to build an easy to port user-mode homebrew loader for game exploits.
