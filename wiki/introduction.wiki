@@ -1,0 +1,75 @@
+#summary Half Byte Loader
+#labels Phase-Requirements
+
+= *Introduction* =
+
+*What is HB Loader?*
+
+HB Loader is a project to build an easy to port user-mode homebrew loader for game exploits.
+
+
+*Why HB Loader?*
+
+To allow users with yet unhackable PSPs to experience the homebrew scene.
+
+
+*Does this allow me to downgrade?
+
+Does whis allow full HEN/CFW?
+
+Does this allow kernel access?*
+
+No, will never be.
+
+
+*Does this load ISO/CSO?*
+
+No, doubt will ever be.
+
+
+*Does this allow me to use emulators?*
+
+Not yet, but I hope it will soon.
+
+
+*What homebrews do work?*
+
+We're having tests for this here: http://advancedpsp.tk/foro_es/viewtopic.php?f=39&t=199
+
+
+*Is this useful for a normal PSP user?*
+
+Not yet, but the objective is to release a fully working version eventually.
+
+
+*What's the project current status?*
+
+Working on it. Check the HBL development subforum: http://advancedpsp.tk/foro_es/viewforum.php?f=37 for more information on current active developers. You can also check the issues: http://code.google.com/p/valentine-hbl/issues/list
+
+
+*When this will be completed?
+
+When this will be useful for normal users?*
+
+No timing schedule for now.
+
+
+*What is need to be done to finish it?*
+
+Check the HBL development subforum: http://advancedpsp.tk/foro_es/viewforum.php?f=37. Also here: http://code.google.com/p/valentine-hbl/issues/list
+
+
+*How can I help?*
+
+1. If you're an advanced developer, studying the source code and helping us with our TODO list
+
+2. If you're a developer but don't understand HBL source, contact the active developers so they can help you understand it
+
+3. Try homebrews with HBL and report if they work or not. Please attach as much information on the homebrew as possible
+
+Check the HBL development subforum: http://advancedpsp.tk/foro_es/viewforum.php?f=37
+
+
+*Can I make modifications/use the source code for myself?*
+
+Yes you can, in fact it's your right. But you MUST also make the source with the changes you did available for everyone to download. You cannot distribute only the binaries.
