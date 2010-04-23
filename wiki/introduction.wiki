@@ -14,9 +14,7 @@ To allow users with yet unhackable PSPs to experience the homebrew scene.
 
 
 *Does this allow me to downgrade?
-
 Does whis allow full HEN/CFW?
-
 Does this allow kernel access?*
 
 No, will never be.
@@ -48,7 +46,6 @@ Working on it. Check the HBL development subforum: http://advancedpsp.tk/foro_es
 
 
 *When this will be completed?
-
 When this will be useful for normal users?*
 
 No timing schedule for now.
