@@ -1,4 +1,4 @@
-#summary Half Byte Loader BETA
+#summary Half Byte Loader BETA FAQ
 #labels Phase-Requirements
 
 ==What is HB Loader? ==
