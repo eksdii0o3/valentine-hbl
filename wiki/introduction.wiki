@@ -59,7 +59,9 @@ Check the HBL development subforum: http://advancedpsp.tk/foro_es/viewforum.php?
 
 2. If you're a developer but find hard to understand HBL source, contact the active developers so they can help you understand it
 
-3. Try homebrews with HBL and report if they work or not. Please attach as much information on the homebrew as possible
+3. Help with development-related tasks: http://advancedpsp.tk/foro_es/viewtopic.php?f=39&t=363&start=10
+
+4. Try homebrews with HBL and report if they work or not. Please attach as much information on the homebrew as possible
 
 Check the HBL forum: http://advancedpsp.tk/foro_es/viewforum.php?f=39
 
