@@ -27,7 +27,7 @@ No, doubt will ever be.
 
 ==Does this allow me to use emulators?==
 
-Not yet, but I hope it will soon.
+Some emulators work, others don't, but we are trying to improve the compatibility
 
 ==Then what homebrews do work?==
 
