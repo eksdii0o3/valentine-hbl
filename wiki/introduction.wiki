@@ -31,7 +31,7 @@ Some emulators work, others don't, but we are trying to improve the compatibilit
 
 ==Then what homebrews do work?==
 
-We're having tests for this here: http://advancedpsp.tk/foro_es/viewtopic.php?f=39&t=199
+We're having tests for this here: http://advancedpsp.tk/foro_es/viewforum.php?f=41
 
 ==Is this useful for a normal PSP user?==
 
@@ -61,7 +61,7 @@ Check the HBL development subforum: http://advancedpsp.tk/foro_es/viewforum.php?
 
 3. Help with development-related tasks: http://advancedpsp.tk/foro_es/viewtopic.php?f=39&t=363&start=10
 
-4. Try homebrews with HBL and report if they work or not. Please attach as much information on the homebrew as possible
+4. Try homebrews with HBL and report if they work or not. Please attach as much information on the homebrew as possible: http://advancedpsp.tk/foro_es/viewforum.php?f=41
 
 Check the HBL forum: http://advancedpsp.tk/foro_es/viewforum.php?f=39
 
@@ -75,7 +75,7 @@ Yes you can, in fact it's your right. But you MUST also make the source with the
 
 2. You also need a hacked savegame, which exploits the game: http://advancedpsp.tk/foro_es/download/file.php?id=329. Put it on the PSP. Try and make sure the demo works, the savegame shows and it's loadable.
 
-3. You need to compile the HBL. For this, you need to have setup the PSPSDK (_svn://svn.ps2dev.org/psp/trunk_) and retreive the HBL source code by using this svn command: _svn checkout http://valentine-hbl.googlecode.com/svn/trunk/ valentine-hbl-read-only_. Then go to the eLoader directory and "make" it. 
+3. You need to compile the HBL. For this, you need to have setup the PSPSDK (_svn://svn.ps2dev.org/psp/trunk_) and retreive the HBL source code by using this svn command: _svn checkout http://valentine-hbl.googlecode.com/svn/trunk/ valentine-hbl-read-only_. Then go to the _eLoader_ directory and "make" it. 
 
 4. How to setup HBL on your MS: 
 
