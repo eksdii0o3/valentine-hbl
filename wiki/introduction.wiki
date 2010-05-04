@@ -75,7 +75,9 @@ Yes you can, in fact it's your right. But you MUST also make the source with the
 
 2. You also need a hacked savegame, which exploits the game: http://advancedpsp.tk/foro_es/download/file.php?id=329. Put it on the PSP. Try and make sure the demo works, the savegame shows and it's loadable.
 
-3. You need to compile the HBL. For this, you need to have setup the PSPSDK (_svn://svn.ps2dev.org/psp/trunk_) and retreive the HBL source code by using this svn command: _svn checkout http://valentine-hbl.googlecode.com/svn/trunk/ valentine-hbl-read-only_. Then go to the _eLoader_ directory and "make" it. 
+3. You can download compiled binaries here: http://code.google.com/p/valentine-hbl/downloads/list, here: http://advancedpsp.tk/foro_es/viewtopic.php?f=39&t=311, and also here: http://wololo.net/wagic/hbl/
+
+Alternatively (and _better_), you can compile HBL. For this, you need to have setup the PSPSDK (_svn://svn.ps2dev.org/psp/trunk_) and retreive the HBL source code by using this svn command: _svn checkout http://valentine-hbl.googlecode.com/svn/trunk/ valentine-hbl-read-only_. Then go to the _eLoader_ directory and "make" it. 
 
 4. How to setup HBL on your MS: 
 
