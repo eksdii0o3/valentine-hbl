@@ -35,7 +35,7 @@ We're having tests for this here: http://advancedpsp.tk/foro_es/viewforum.php?f=
 
 ==Is this useful for a normal PSP user?==
 
-Not yet, but the objective is to release a fully working version eventually.
+Some users already enjoy it, but the work is not finished yet.
 
 ==What's the project current status?==
 
