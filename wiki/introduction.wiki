@@ -33,6 +33,10 @@ Some emulators work, others don't, but we are trying to improve the compatibilit
 
 We're having tests for this here: http://advancedpsp.tk/foro_es/viewforum.php?f=41
 
+==How about PS1 games?==
+
+PS1 games use a very different mechanism and we have no plan to work on this for now.
+
 ==Is this useful for a normal PSP user?==
 
 Some users already enjoy it, but the work is not finished yet.
