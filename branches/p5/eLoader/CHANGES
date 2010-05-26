@@ -1,0 +1,280 @@
+2010/05/22 (m0skit0)
+- Added scrolling menu for 40 homebrews max (thanks to MrShawman!)
+- Separate mallocs for p5 and p2 (r80 and r81 malloc code was wrong)
+- Included missing file lib.h
+- Included some code for loading utility modules (not operating yet)
+--> IMHO HBL needs a serious recoding effort...
+
+2010/05/22 (wololo)
+- Still considered as EXPERIMENTAL RELEASE
+- Made the Makefile more strict
+- Fixed a few issues detected by gcc
+- Fixed a malloc bug that prevented Wagic from loading correctly in rev80
+- Fixed issue 129
+
+2010/05/19 (m0skit0)
+- EXPERIMENTAL RELEASE
+- Tested on PSP 2000 5.00 M33 & PSP Go 6.20
+- Changed HBL to be loaded on memory partition 5 instead of the usual 2
+--> This gives us whole parition 2 memory, and should get rid of stuff being overwritten
+- I got rid of the HBL memory allocation since we actually inject HBL to partition 5
+- HBL stubs are back to scratchpad (since we can't allocate p5 memory from p2)
+
+2010/05/13 (wololo)
+- added md5 functions (they can be removed and replaced by a _hook_generic_success if we are short on ram, I only added that for gpsp, but it works without it)
+- added some more hooks for improved compatibility
+- Added configuration file with possibility of local override on a per game basis
+-- the config file allows to choose the folder in which the menu will start
+
+- I'm seeing weird effects from time to time when compiling. I think we have a huge bug somewhere OR as m0skit0 said we are running out of memory, and the stack is meeting our data :(
+
+2010/05/11 (m0skit0)
+- Fixed an error on "make distrib" (again, thanks Cathesdus)
+- Put back the tables memory allocation (seems to work fine now)
+- Deleted all user mode libraries from the tables
+--> It's useless to have them there when the user mode modules have been unloaded
+- Fixed REESTIMATE_SYSCALL define to be useful (wasn't used)
+- Added a new make target (nonids) to build without NID debug
+- Fixed big stupid bug on new syscall estimation method (FROM_CLOSEST)
+
+2010/05/10 (m0skit0)
+- Reverted the tables memory allocation, made a lot of things to fail
+- Fixed error on "make distrib" (thanks Cathesdus)
+- Fixed bug on syscall reestimation
+- Added a new reestimation method
+- Reverted first estimation method (FROM_LOWEST)
+- Fixed 5.03 FW detection (should be detected as 5.50)
+- HBL tables are now allocated separately, this fixes a bug where they were overwritten when another module was loaded
+- Changed reestimation method order (I don't see any improvement though)
+
+2010/05/07 (wololo)
+- More functions overrides
+- Automatic SVN version number through makefile (tested on cygwin and dos command line, hopefully will work on linux too)
+- Some cleanup. Removed some dead code.
+- Fixed a nid bug in eLoaderconf.rb
+
+2010/05/04 (m0skit0)
+- Fixed a bug in syscall estimation for PSP Go
+- Added 2 new methods for syscall estimation (also for reestimation)
+- Added new C files for function testing and reestimation
+- Now reestimation seems to work sometimes (compared to never working before xD)
+--> Needs more heavy testing
+- Modified data structure to hold NIDs (added number of nids)
+- Now estimated syscalls are saved on nid_table so they don't have to be estimated again (until table fills)
+--> This feature may need a more dynamic nid_table (linked list?)
+- Added revision number to print on screen (please take care on updating this!)
+
+2010/05/02 (wololo)
+- more Functions overrides. Some of them are direct Aliases so they're 100% good
+-- other are more borderline and we need a way to use them or not on a game-per-game and maybe firmware basis (config file)
+- updated Makefile. make or make dev for debug, make distrib for no debug info
+- Added sceReg.nids
+
+2010/05/02 (m0skit0)
+- Changed detection of FW 5.51 as 5.55 (previously set to 5.50) to load correct configuration
+
+2010/04/30 (m0skit0)
+- Fixed resolving functions (resolve.c) to accept other loading address than PRX_LOAD_ADDRESS
+--> Now external modules seem to load/relocate/resolve fine, they do not crash but do not start either. PSPLink reports the external module thread is stopped
+- Minor code/style fixing
+
+2010/04/30 (wololo)
+- Override a bunch of functions to avoid estimating them
+-- Most of those can be deactivated with macros in eLoader.h (in the future we'll want a config for each game)
+-- With these overrides, Wagic now loads on the PSPGo as long as you remove the mp3s from the Sound folder. (it crashes when attempting to save options though...)
+- Fixed a bug that prevented big EBOOTS from loading (scummVM) because the path was overwritten
+
+2010/04/30 (m0skit0)
+- Added hooks for external module loading
+- Fixed some bugs on module loading/starting
+--> HBL crashes when resolving the imports for loaded module. Seems values have not been relocated.
+
+2010/04/28 (m0skit0)
+- Changed prx_load_program() to accept addresses other than PRX_LOAD_ADDRESS
+- Added load_module and start_module functions in modmgr.c
+- Moved some generic functions from utils.c to lib.c
+- Changed EBOOT offset type to SceOff
+- Added relevant data structures and functions for module loading
+- To load external modules, hook sceKernelLoadModule and sceKernelStartModule (not tested), and uncomment LOAD_MODULE
+- Big thanks to ab5000 for the memory allocation library!
+
+2010/04/27 (m0skit0)
+- Added a new member to tNIDResolver struct to relate each NID to a library
+--> I think this is better than including a pointer/array for NID in tSceLibrary
+- Added more debugging functions to dump ELF structures directly (more need to be done)
+- Added a new data structure to handle module loading information
+- New parsing user modules to free (thanks to Davee)
+
+2010/04/26 (m0skit0)
+- Fixed minor bug on menu (error is < 0, not <= 0)
+- More eloader.c house cleaning
+
+2010/04/24 (m0skit0)
+- Added kernel memory dump for PSPGo at the start of the loader, because otherwise accessing kmem will fail (i dont know why)
+--> This can be improved dumping only necessary offsets and not the whole partition
+- Added finding lowest syscall from kernel memory for some libraries -only for PSP Go, and using the kmem dump-
+- Got rid of intermediate static buffer for loading HBL into memory
+- Changed tool "umem dumper" to do a kernel dump as well (only works on PSP Go) and changed the linker address to the new one on the new savedata (new!)
+
+2010/04/25 (wololo)
+- cleaned up Davee's free memory function
+-- Also fixed issue 42 : 6.20 hangs on free_game_memory (as usual, syscall estimation was the culprit, I replaced the "find_thread" call with a direct address fetch like Davee does)
+- Written own sceKernelMaxFreeMemSize() and sceKernelTotalFreeMemSize() functions to avoid 2 unecessary syscall estimates (avoids a crash in free_memory by ab5000)
+- Fixed issue 41 (How to distinguish between Go and other PSPs ) : call getPSPModel() in utils.c (see eLoader.c which does that call). Note: impossible with this technique to differentiate other psp models though
+- Fixed issue 39 ([Rev 49]Still no Free Ram). This was actually an issue with the game T.O.M.E and I'll post an updated Eboot for this game on my blog (http://wololo.net/wagic) ASAP
+- Fixed issue 23 (List Only the Homebrew ) with a simple filter in menu.bin. Hopefully that should clean things a little bit.
+- Added some more syscall boundaries, but I'm not super happy with the result (a.k.a. haven't seen any improvement), so maybe that update can be reverted :(
+- removed the FAKEMEM flag as it is not needed anymore. I kept the hook for AllocPartitionMemory for debug purposes, but it should probabl be removed in the future. 
+
+2010/04/23 (m0skit0)
+- STILL DOESN'T WORK
+- Fixed a few bugs, mostly concerning syscall estimations being wrongly calculated. Now they seem fine, but still no go :(
+- Put back a loop at the end of loader (do not exit user_main)
+- Davee's free_game_memory adjusted to free user_main
+- Added sceHprm.nids from 6.20 FW (libs_6xx)
+- Deleted NID table processor tool (not needed anymore)
+
+2010/04/22 (m0skit0)
+- NOT WORKING REVISION
+- Splitted several stuff from eloader.c to tables.c and hook.c (can be splitted more)
+- Added several functions to HBL imports 
+- Updated eLoaderconf.rb tool too
+- Added Davee's free memory function to HBL (you can choose between ab5000's and Davee's method in eloader.h)
+- Fixed a bug where HBL would not check if own imports already exist in NID table
+--> All seems to work fine, but HB doesn't execute
+
+2010/04/18 (m0skit0)
+- Added imports.config for 5.50 and 5.55 differences (thanks to ultimakillz)
+
+2010/04/18 (wololo)
+- Added firmware detection for 5.55 (thanks to Epel for the memory dump)
+- Added basic "printf" functions for improved logging (thanks Fanjita & noobz for the initial code)
+
+2010/04/17 (wololo)
+- This change requires a new Save Game file (changed the address where h.bin is loaded). Regenerate the Save Game by yourself (codes in the folder SDK) or get it at http://wololo.net/wagic
+- Code to unload the module "Labo". The code works, but it basically breaks compatibility with all the homebrews I tested, so right now I commented the code out.
+To activate it, define the macro "UNLOAD_MODULE" in eLoader.h
+
+2010/04/17 (wololo)
+- Experimental!!! firmware detection mechanism. No need to rename libs_5xx and libs_6xx, as well as imports.config_* : the HBL automatically loads the "correct" one
+
+2010/04/16 (ultimakillz)
+- Added new imports.config files for 5.0x, 5.5x, 5.70 and 6.20 (PSP Go) versions (courtesy from ultimakillz)
+
+2010/04/14 (m0skit0)
+- Fixed nidtohuman tool Makefile
+- Added a very very very simple syscall reestimation function
+
+2010/04/13 (m0skit0)
+- Fixed buffer overflow in estimate_syscall() (issue 14)
+- Fixed ELF path (issue 13)
+- Separate imports.config for 5XX and 6XX. Rename to imports.config
+- Added 2 more tools: a processor to make NID table dumps more readable and a user memory dumper (useful for 6.20)
+
+2010/04/12 (m0skit0)
+- Added more .lib.stubs sections to imports.config
+- Added code to HBL process any number of .lib.stubs defined in imports.config
+--> eLoaderconf.rb broken, wololo please fix it
+- Added more functions and a lot of order to sdk_loader.S
+- Moved get_library_entry() from syscall.c to eloader.c
+- Added a new directory with tools for HBL development
+- Added NIDSPRX tool by arisma
+- Added whole GPLv3 to LICENSE
+- This changes should improve syscall estimation :)
+--> Need more .nids files for the new libraries
+
+2010/04/10 (wololo)
+- All files except h.bin now NEED TO BE PUT in a "hbl" folder at the root of the memstick
+-- this can be changed in the code by modifying HBL_ROOT
+- simplified the "menu/no menu" choice from a user's perspective (since the menu seems to be not working for lots of people):
+-- if a "ms0:/hbl/game/EBOOT.PBP" file exists, it will be launched, otherwise the menu is launched
+
+2010/04/08 (m0skit0)
+- Changed imports.config structure (check config.h for new structure)
+- Changed config.c library to suit new file structure (also fixed some old bugs)
+- Some code cleaning (i.e. moved reestimate_syscall() to syscall.c)
+- Disabled return to HBL menu on homebrew exit
+- Adjusted MAX_LIBRARY_EXPORTS to 160.
+
+2010/04/07 (wololo)
+- small menu improvements
+- shortened the delay for free mem ("free memory" step goes faster)
+- dblog is deleted everytime the HBL is started
+
+2010/04/06 (wololo)
+- adding output to the screen while HBL loads
+- putting back my fakemem mechanism so that T.O.M.E runs. To deactivate it, comment out the "define FAKEMEM"
+-- that fakemem system is of course temporary until we can actually free the ram
+
+2010/04/04 (wololo)
+- Adding a very basic menu
+- Put back the exit_with_log if thread not found, feel free to revert that change
+
+2010/04/04 (ab5000)
+- Still very unstable (Wagic crashes and T.O.M.E. gives "core() error")
+- Added malloc.c and malloc.h
+- Now relocate_sections reads the whole section in a dinamically allocated buffer
+--> Now relocation is A LOT faster! :)
+--> T.O.M.E. takes about 15 seconds to start (debug enabled)
+--> Wagic takes about 1 minute to start (debug enabled)
+- Now loader allocates HBL stubs using PSP_SMEM_High because homebrew was overwriting them
+--> We need to unload Labo and use PSP_SMEM_Low so they'll be BEFORE the homebrew!
+--> We also need to make HBL relocatable!
+- Added a bit of debug to find_thread
+- Added a bit of debug to relocate_sections
+- Moved hardcoded scratchpad addresses to scratchpad.h
+--> They are still hardcoded in sdk_hbl.S, someone knows how to use a C defines in ASM?
+
+2010/04/03
+- Still doesn't work!!!
+--> It crashes in sgx-psp-freq-thr thread when freeing memory
+--> Threads aren't found (why???) and aren't terminated
+--> So when HBL frees semaphores/event flags the thread crashes
+- Now AddNID in sdk_hbl.S use $v0 instead of $fp
+--> This fixes sceSystemMemoryManager crash in revision 10 :)
+
+2010/04/03
+- This revision doesn't work!!!
+--> Crash in sceSystemMemoryManager (???) when resolving homebrew imports
+- Added sceKernelAllocPartitionMemory
+- Now the loader allocates memory for HBL
+- Now HBL allocates memory for the homebrew
+- Removed hooks from sceKernelAllocPartitionMemory, sceKernelGetBlockHeadAddr and sceKernelGetMaxFreeMemSize
+--> Now the homebrew can use the whole free memory :-)
+- Fixed a bug in loader.c that was causing crashes
+--> In search_game_stubs, stub_list wasn't completely zeroed
+- Fixed "CANNOT FIND THREAD TO DELETE" bug (HBL now doesn't exit)
+--> We still need a proper fix!
+
+2010/03/31
+- Added sceKernelReferEventFlagStatus
+- Added sceKernelDeleteEventFlag
+--> imports.config and loader are changed, so remember to use the new ones when testing!
+- Added find_evflag (thread.c)
+- Added event flags, remaining semaphores and UserSbrk address to memory.c
+--> Now we have 0x1410400 free bytes (20 Megabytes) :-)
+
+2010/03/19
+- Added code for stopping and unloading the game module, but it crashes on sceKernelStopModule
+
+﻿2010/03/13
+- Attempt at fixing misaligned relocations
+
+2010/03/07
+- Fixed issue with relocated EBOOT.PBP :)
+
+2010/03/07
+- fixed the return value of prx_load_program in elf.c.
+--> prx loading now works. To try, add BUILD_PRX=1 to the hello/Makefile, and copy eboot.prx to eboot.elf on the root of the memstick
+--> Still doesn't work from EBOOT, there's a problem with the offset, needs investigation
+
+04/03/2010
+- Added a new config file (file structure on config.h) to move there some game information
+- Implemented a library for easy interfacing with config file
+- Added code for loader to handle the config file, thus resolving HBL imports that exist on game
+- Added code for HBL to handle the config file, thus estimating own imports that the loader couldn't resolve
+
+Last changes:
+- Added a loader that loads HBL on scratchpad instead of game region
+- HBL loader now also copies stubs used by HBL to scratchpad
+- Added a new data structure (tSceLibrary) and subsituted estimate_syscall() with a new implementation
