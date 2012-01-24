@@ -3,7 +3,7 @@
 
 ==What is HB Loader? ==
 
-HB Loader is a project to build an easy to port user-mode homebrew loader for game exploits.
+HB Loader is a project to build an easy to port user-mode homebrew loader for the Sony PSP console.
 
 ==Why HB Loader?==
 
@@ -27,11 +27,11 @@ No, doubt will ever be.
 
 ==Does this allow me to use emulators?==
 
-Some emulators work, others don't, but we are trying to improve the compatibility
+Most emulators work!
 
 ==Then what homebrews do work?==
 
-We're having tests for this here: http://advancedpsp.tk/foro_es/viewforum.php?f=41
+We're having tests for this here: http://wololo.net/talk/viewforum.php?f=11
 
 ==How about PS1 games?==
 
@@ -43,7 +43,7 @@ Some users already enjoy it, but the work is not finished yet.
 
 ==What's the project current status?==
 
-It's still a BETA, but the developers are working on it ;) Check the HBL development subforum: http://advancedpsp.tk/foro_es/viewforum.php?f=37 for more information on developing. You can also check the issues: http://code.google.com/p/valentine-hbl/issues/list
+It's still a BETA, but the developers are working on it ;) You can check the current issues: http://code.google.com/p/valentine-hbl/issues/list. Also check the HBL development subforum: hhttp://wololo.net/talk/viewforum.php?f=4 for more information/help on developing. 
 
 ==When this will be completed?==
 
@@ -51,11 +51,11 @@ No timing schedule for now.
 
 ==When this will be useful for normal users?==
 
-No timing schedule for now.
+It is already ;)
 
 ==What is need to be done to finish it?==
 
-Check the HBL development subforum: http://advancedpsp.tk/foro_es/viewforum.php?f=37. Also here: http://code.google.com/p/valentine-hbl/issues/list
+See the ==What's the project current status?== question.
 
 ==How can I help?==
 
@@ -63,11 +63,11 @@ Check the HBL development subforum: http://advancedpsp.tk/foro_es/viewforum.php?
 
 2. If you're a developer but find hard to understand HBL source, contact the active developers so they can help you understand it
 
-3. Help with development-related tasks: http://advancedpsp.tk/foro_es/viewtopic.php?f=39&t=363&start=10
+3. Help with development-related tasks: http://wololo.net/talk/viewforum.php?f=4
 
-4. Try homebrews with HBL and report if they work or not. Please attach as much information on the homebrew as possible: http://advancedpsp.tk/foro_es/viewforum.php?f=41
+4. Try homebrews with HBL and report if they work or not. Please attach as much information on the homebrew as possible: http://wololo.net/talk/viewforum.php?f=11
 
-Check the HBL forum: http://advancedpsp.tk/foro_es/viewforum.php?f=39
+Check the HBL forum: http://wololo.net/talk/viewforum.php?f=3
 
 ==Can I make modifications/use the source code for myself?==
 
@@ -75,26 +75,4 @@ Yes you can, in fact it's your right. But you MUST also make the source with the
 
 ==How can I install this?==
 
-1. You need the Patapon 2 Demo: http://rapidshare.com/files/376959863/patapon2.zip. Put it on the PSP.
-
-2. You also need a hacked savegame, which exploits the game: http://advancedpsp.tk/foro_es/download/file.php?id=329. Put it on the PSP. Try and make sure the demo works, the savegame shows and it's loadable.
-
-3. You can download compiled binaries here: http://code.google.com/p/valentine-hbl/downloads/list, here: http://advancedpsp.tk/foro_es/viewtopic.php?f=39&t=311, and also here: http://wololo.net/wagic/hbl/
-
-Alternatively (and _better_), you can compile HBL. For this, you need to have setup the PSPSDK (_svn://svn.ps2dev.org/psp/trunk_) and retreive the HBL source code by using this svn command: _svn checkout http://valentine-hbl.googlecode.com/svn/trunk/ valentine-hbl-read-only_. Then go to the _eLoader_ directory and "make" it. 
-
-4. How to setup HBL on your MS: 
-
-- Copy _h.bin_ to MS root. 
-
-- Create a folder on MS root called _HBL_
-
-- Copy on _HBL_ folder the folders libs_5xx, libs_6xx and config
-
-- Copy on _HBL_ folder the files _hbl.bin_ and _menu.bin_
-
-- Place your homebrews as normal, i.e. on ms0:/PSP/GAME
-
-5. Trigger the exploit: run Patapon 2 demo, load the savegame, press R when you get to the game
-
-For more information about this : http://advancedpsp.tk/foro_es/viewforum.php?f=39
+Go to the forums ;) http://wololo.net/talk/viewtopic.php?f=3&t=204
