@@ -45,13 +45,9 @@ We're having tests for this here: http://wololo.net/talk/viewforum.php?f=11 (PSP
 
 PS1 games use a different mechanism to load and we have no plan to work on this for now.
 
-==Is this useful for a normal PSP user?==
+==Is this useful for a normal user?==
 
 Some users already enjoy it, but the work is not finished yet.
-
-==Is this useful for a normal PSV user?==
-
-For now (2012-05-03) it's the only way of having homebrews on PSV.
 
 ==What's the project current status?==
 
